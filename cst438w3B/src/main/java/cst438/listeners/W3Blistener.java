@@ -28,7 +28,7 @@ public class W3Blistener {
 	
 	@RabbitHandler
     public void receive(User u) {
-        System.out.println(" [W3Blistner] Received " + u );
+        System.out.println(" [W3Blistener] Received " + u );
         try { 
 
 	        User newuser = new User(u);
@@ -37,10 +37,10 @@ public class W3Blistener {
 	        // send message back to w3a server
 	        ResponseEntity<User> response = restTemplate.postForEntity(w3aURL, newuser, User.class);
 	        int status = response.getStatusCodeValue();
-	        System.out.println(" [W3Blistner] HttpSttaus " + status  );
+	        System.out.println(" [W3Blistener] HttpStatus " + status  );
 	        
         } catch (Exception e) {
-        	System.out.println(" [W3Blistner] Exception " + e.getMessage()  );
+        	System.out.println(" [W3Blistener] Exception " + e.getMessage()  );
         }
     }
 }
